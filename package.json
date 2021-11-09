@@ -1,31 +1,82 @@
 {
-  "name": "electron-quick-start",
+  "name": "shadow",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "npx electron-packager . --out downloads/buildata --overwrite --ignore node_modules",
+    "dev": "nodemon --exec \"npm start\" --arg=1"
   },
   "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^15.3.0",
-    "electron-packager": "^15.4.0"
-  },
-  "dependencies": {
+    "electron-packager": "^15.4.0",
     "@marshallofsound/electron-router": "^1.2.3",
     "@types/socket.io": "^3.0.2",
+    "electron-log": "^4.4.1",
     "electron-router": "^0.5.1",
     "express": "^4.17.1",
     "socket.io": "^4.3.2",
     "socket.io-client": "^4.3.2"
+  },
+  "build": {
+    "appId": "com.shadow-bot.electron.exchange.stream",
+    "productName": "Shadow bot Dashboard",
+    "copyright": "Copyright © 2018 Trinity InfoSystem",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "assets/icon.icns",
+      "target": [
+        "zip",
+        "dmg"
+      ],
+      "publish": [
+        "github"
+      ]
+    },
+    "win": {
+      "publisherName": "Shadow-bot Dashboard",
+      "publish": [
+        "github"
+      ],
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "tar.gz"
+      ]
+    },
+    "dmg": {
+      "background": "assets/background.png",
+      "icon": "assets/icon.icns",
+      "title": "Shadow bot"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "installerSidebar": "assets/sidebar.bmp",
+      "uninstallerSidebar": "assets/sidebar.bmp",
+      "license": "assets/agreement.html",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "shadow-coders",
+        "repo": "accurate",
+        "vPrefixedTagName": true,
+        "private": true,
+        "releaseType": "draft"
+      }
+    ]
   }
 }
