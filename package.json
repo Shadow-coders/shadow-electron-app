@@ -1,0 +1,31 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^15.3.0",
+    "electron-packager": "^15.4.0"
+  },
+  "dependencies": {
+    "@marshallofsound/electron-router": "^1.2.3",
+    "@types/socket.io": "^3.0.2",
+    "electron-router": "^0.5.1",
+    "express": "^4.17.1",
+    "socket.io": "^4.3.2",
+    "socket.io-client": "^4.3.2"
+  }
+}
