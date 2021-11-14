@@ -1,10 +1,17 @@
 {
-  "name": "shadow",
+  "name": "@shadow-coders/app",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "index.js",
+  "bin": {
+    "shadowapp": "cli.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
-    "start": "electron .",
+    "start": "electron main.js",
     "package-windows": "npx electron-packager . --out downloads/buildata --overwrite --prune=true --icon=assets/favicon.ico --arch=ia32 --platform=win32 --ignore .env --ignore user.json --ignore redirects.txt --ignore logs --ignore downloads",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/favicon.ico --prune=true --out=downloads/buildata",
     "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/favicon.ico --prune=true --out=downloads/buildata",
@@ -12,9 +19,7 @@
     "build:windows": "node build.js*",
     "build": "npm run package-windows && npm run package-mac && npm run package-linux && node build.js"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "author": "GitHub",
-  "license": "CC0-1.0",
   "devDependencies": {
     "@marshallofsound/electron-router": "^1.2.3",
     "@types/socket.io": "^3.0.2",
