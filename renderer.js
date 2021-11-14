@@ -1,15 +1,19 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// No Node.js APIs are available in this process because
-// `nodeIntegration` is turned off. Use `preload.js` to
-// selectively enable features needed in the rendering
-// process.
-const { shell } = require('electron')
-console.log(process)
-const launch = (path) => {
-    shell.openPath(`${path}://`)
-}
-const { io } = require("socket.io-client");
-const socket = io('https://shadow-bot.dev/');
-socket.on('connect', () => console.debug('connected [socket.io]'))
-document.getElementById('text').innerHTML = process.argv.slice(2).join('\n')
+// // This file is required by the index.html file and will
+// // be executed in the renderer process for that window.
+// // No Node.js APIs are available in this process because
+// // `nodeIntegration` is turned off. Use `preload.js` to
+// // selectively enable features needed in the rendering
+// // process.
+// window.onload = () => {
+// const loggedIn = false;
+// if(window.loggedIn === undefined) {
+//     const loginwindow = window.location.replace('http://localhost:8080/login')
+// // const end = () => {
+// //     if(!window.loggedIn) {
+// //             window.alert('Login failed')
+// //     window.close()
+// //         }
+// //     }
+// //     loginwindow.onclose = end;
+// }
+// }

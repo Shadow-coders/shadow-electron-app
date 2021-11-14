@@ -5,18 +5,22 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "npx electron-packager . --out downloads/buildata --overwrite --ignore node_modules",
-    "dev": "nodemon --exec \"npm start\" --arg=1"
+    "package-windows": "npx electron-packager . --out downloads/buildata --overwrite --prune=true --icon=assets/favicon.ico --arch=ia32 --platform=win32 --ignore .env --ignore user.json --ignore redirects.txt --ignore logs --ignore downloads",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/favicon.ico --prune=true --out=downloads/buildata",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/favicon.ico --prune=true --out=downloads/buildata",
+    "dev": "nodemon --exec npm start",
+    "build:windows": "node build.js*",
+    "build": "npm run package-windows && npm run package-mac && npm run package-linux && node build.js"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^15.3.0",
-    "electron-packager": "^15.4.0",
     "@marshallofsound/electron-router": "^1.2.3",
     "@types/socket.io": "^3.0.2",
-    "electron-log": "^4.4.1",
+    "debug": "^4.3.2",
+    "electron": "^15.3.0",
+    "electron-packager": "^15.4.0",
     "electron-router": "^0.5.1",
     "express": "^4.17.1",
     "socket.io": "^4.3.2",
@@ -61,7 +65,7 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "assets/icon.ico",
+      "installerIcon": "assets/favicon.ico",
       "installerSidebar": "assets/sidebar.bmp",
       "uninstallerSidebar": "assets/sidebar.bmp",
       "license": "assets/agreement.html",
@@ -78,5 +82,11 @@
         "releaseType": "draft"
       }
     ]
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "electron-winstaller": "^5.0.0",
+    "electron-wix-msi": "^3.2.0",
+    "original-fs": "^1.1.0"
   }
 }

@@ -1,3 +1,15 @@
 downloads/buildata
 node_modules
 downloads/win/shadow.exe
+.env
+*.logs
+logs
+#debug
+redirects.txt
+#user info
+user.json
+dist
+*.zip
+*.nupkg
+*.exe
+*.msi
